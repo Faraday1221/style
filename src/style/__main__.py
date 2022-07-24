@@ -3,14 +3,16 @@ import shutil
 import subprocess
 from pathlib import Path
 
+CFG = "setup.cfg"
+
 
 def _copy_setup(args) -> None:
     """Copy the default setup.cfg file to a user specified destination.
 
     If setup.cfg already exists in the destination, prompt the user
     for explicit permission to overwrite."""
-    src = Path(__file__).parent.parent.parent / "setup.cfg"
-    dst = Path(args.path) / "setup.cfg"
+    src = Path(__file__).parent / f"data/{CFG}"
+    dst = Path(args.path) / CFG
     print(f"src={src}\ndst={dst}")
 
     # if file exists in dst prompt user for manual override
